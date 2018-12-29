@@ -43,16 +43,16 @@ build_script:
 after_build:
 - ps: >-
     Write-Host $env:BuildCore
-    
-    if($env:BuildCore)
-    {
-        dotnet pack FWTL.Core.Common/FWTL.Core.Common.csproj --no-build --output nupkgs -p:PackageVersion=$env:APPVEYOR_REPO_TAG_NAME
-    }
 
-    if($env:BuildInfrastructure)
-    {
-        dotnet pack FWTL.Infrastructure.Common/FWTL.Infrastructure.Common.csproj --no-build --output nupkgs -p:PackageVersion=$env:APPVEYOR_REPO_TAG_NAME
-    }
+    # if($env:BuildCore)
+    # {
+    #     dotnet pack FWTL.Core.Common/FWTL.Core.Common.csproj --no-build --output nupkgs -p:PackageVersion=$env:APPVEYOR_REPO_TAG_NAME
+    # }
+
+    # if($env:BuildInfrastructure)
+    # {
+    #     dotnet pack FWTL.Infrastructure.Common/FWTL.Infrastructure.Common.csproj --no-build --output nupkgs -p:PackageVersion=$env:APPVEYOR_REPO_TAG_NAME
+    # }
 
 nuget:
     disable_publish_on_pr: true
