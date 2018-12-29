@@ -6,7 +6,7 @@ branches:
 
 init:
     - ps: |
-            Set-AppveyorBuildVariable -Name "PackageVersion" -Value '1.0.0'
+            Set-AppveyorBuildVariable -Name "PackageVersion" -Value 1.0.0
             Set-AppveyorBuildVariable -Name "BuildCore" -Value True
             Set-AppveyorBuildVariable -Name "BuildInfrastructure" -Value True
 
@@ -45,12 +45,12 @@ after_build:
 - ps: >-
     if($env:BuildCore)
     {
-        dotnet pack FWTL.Core/FWTL.Core.csproj --no-build --output nupkgs -p:PackageVersion= "'$env:PackageVersion'"
+        dotnet pack FWTL.Core/FWTL.Core.csproj --no-build --output nupkgs -p:PackageVersion=$env:PackageVersion
     }
 
     if($env:BuildInfrastructure)
     {
-        dotnet pack FWTL.Infrastructure/FWTL.Infrastructure.csproj --no-build --output nupkgs -p:PackageVersion= "'$env:PackageVersion'"
+        dotnet pack FWTL.Infrastructure/FWTL.Infrastructure.csproj --no-build --output nupkgs -p:PackageVersion=$env:PackageVersion
     }
 
 nuget:
