@@ -35,7 +35,7 @@ build_script:
 
 after_build:
 - ps: >-
-    dotnet pack --no-build --output nupkgs -p:PackageVersion='1.0.0'
+    dotnet pack FWTL.sln --no-build --output nupkgs -p:PackageVersion='1.0.0'
 
 nuget:
     disable_publish_on_pr: true
