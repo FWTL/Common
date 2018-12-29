@@ -39,13 +39,13 @@ nuget:
 deploy: 
     - provider: NuGet
       api_key:
-          secure: 55pO38HXY6SYCcSyEDy6XVdpDgJOasIlIp/MIOlwZoH+rEj4fN+hMabmP+0wJyt5
+          secure: 4dgur5pRw+KDWKk2AD4v4YuOaxjd8FfkI7wjpb+b3DiKEqnrYV/ZBwoGWA5lYfDl
       artifact: nuget-core
       on:
           appveyor_repo_tag: true
     - provider: NuGet
       api_key:
-          secure: 55pO38HXY6SYCcSyEDy6XVdpDgJOasIlIp/MIOlwZoH+rEj4fN+hMabmP+0wJyt5
+          secure: 4dgur5pRw+KDWKk2AD4v4YuOaxjd8FfkI7wjpb+b3DiKEqnrYV/ZBwoGWA5lYfDl
       artifact: nuget-infrastructure
       on:
           appveyor_repo_tag: true
