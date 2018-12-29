@@ -19,8 +19,9 @@ artifacts:
   - path: \nupkgs\*.nupkg
     name: NuGet
 
-# cache:
-#   - Source\packages -> **\packages.config
+cache:
+  - packages -> **\FWTL.Core.csproj
+  - packages -> **\FWTL.Infrastructure.csproj
 
 pull_requests:
   do_not_increment_build_number: true
