@@ -6,9 +6,8 @@ branches:
 
 init:
     - ps: |
-            Set-AppveyorBuildVariable -Name "PackageVersion" -Value 1.0.0
-            Set-AppveyorBuildVariable -Name "BuildCore" -Value True
-            Set-AppveyorBuildVariable -Name "BuildInfrastructure" -Value True
+            Set-AppveyorBuildVariable -Name "BuildCore" -Value False
+            Set-AppveyorBuildVariable -Name "BuildInfrastructure" -Value False
 
             If ($Env:APPVEYOR_REPO_TAG_NAME -match "Infrastructure"){
               Set-AppveyorBuildVariable -Name "BuildInfrastructure" -Value True
@@ -45,12 +44,12 @@ after_build:
 - ps: >-
     if($env:BuildCore)
     {
-        dotnet pack FWTL.Core.Common/FWTL.Core.Common.csproj --no-build --output nupkgs -p:PackageVersion=$env:PackageVersion
+        dotnet pack FWTL.Core.Common/FWTL.Core.Common.csproj --no-build --output nupkgs -p:PackageVersion=$env:APPVEYOR_REPO_TAG_NAME
     }
 
     if($env:BuildInfrastructure)
     {
-        dotnet pack FWTL.Infrastructure.Common/FWTL.Infrastructure.Common.csproj --no-build --output nupkgs -p:PackageVersion=$env:PackageVersion
+        dotnet pack FWTL.Infrastructure.Common/FWTL.Infrastructure.Common.csproj --no-build --output nupkgs -p:PackageVersion=$env:APPVEYOR_REPO_TAG_NAME
     }
 
 nuget:
@@ -61,16 +60,16 @@ deploy:
       api_key:
           secure: 55pO38HXY6SYCcSyEDy6XVdpDgJOasIlIp/MIOlwZoH+rEj4fN+hMabmP+0wJyt5
       artifact: nuget-core
-      # on:
-      #     appveyor_repo_tag_name: /\d+\.\d+\.\d+(-{0,1})(alpha|$)/
-      #     appveyor_repo_tag: true
+      on:
+          appveyor_repo_tag_name: /\d+\.\d+\.\d+(-{0,1})(alpha|$)/
+          appveyor_repo_tag: true
     - provider: NuGet
       api_key:
           secure: 55pO38HXY6SYCcSyEDy6XVdpDgJOasIlIp/MIOlwZoH+rEj4fN+hMabmP+0wJyt5
       artifact: nuget-infrastructure
-      # on:
-      #     appveyor_repo_tag_name: /\d+\.\d+\.\d+(-{0,1})(alpha|$)/
-      #     appveyor_repo_tag: true
+      on:
+          appveyor_repo_tag_name: /\d+\.\d+\.\d+(-{0,1})(alpha|$)/
+          appveyor_repo_tag: true
   
   
 notifications:
