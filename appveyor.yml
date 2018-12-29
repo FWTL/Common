@@ -6,7 +6,7 @@ branches:
 
 init:
     - ps: |
-            Set-AppveyorBuildVariable -Name "BuildCore" -Value True
+            Set-AppveyorBuildVariable -Name "BuildCore" -Value False
             Set-AppveyorBuildVariable -Name "BuildInfrastructure" -Value False
 
             If ($Env:APPVEYOR_REPO_TAG_NAME -match "Infrastructure"){
@@ -46,8 +46,7 @@ after_build:
     
     if($env:BuildCore -eq 'True')
     {
-        dotnet pack FWTL.Core.Common/FWTL.Core.Common.csproj --no-build --output nupkgs
-        #dotnet pack FWTL.Core.Common/FWTL.Core.Common.csproj --no-build --output nupkgs -p:PackageVersion=$env:APPVEYOR_REPO_TAG_NAME
+        dotnet pack FWTL.Core.Common/FWTL.Core.Common.csproj --no-build --output nupkgs -p:PackageVersion=$env:APPVEYOR_REPO_TAG_NAME
     }
 
     if($env:BuildInfrastructure -eq 'True')
