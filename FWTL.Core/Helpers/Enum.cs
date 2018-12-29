@@ -8,6 +8,7 @@ namespace FWTL.Core.Helpers
             ASC = 1,
         }
 
+
         public enum PerPage
         {
             p10 = 10,
