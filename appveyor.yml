@@ -16,12 +16,13 @@ init:
     - cmd: git config --global core.autocrlf true
 
 artifacts:
-  - path: \nupkgs\*.nupkg
-    name: NuGet
+  - path: FWTL.Core\nupkgs\*.nupkg
+    name: nuget-core
+  - path: FWTL.Infrastructure\nupkgs\*.nupkg
+    name: nuget-infrastructure
 
 cache:
-  - packages -> **\FWTL.Core.csproj
-  - packages -> **\FWTL.Infrastructure.csproj
+  - packages -> FWTL.Core.csproj, FWTL.Infrastructure.csproj
 
 pull_requests:
   do_not_increment_build_number: true
@@ -32,7 +33,7 @@ build_script:
 after_build:
 - ps: >-
     dotnet pack --no-build --output nupkgs -p:PackageVersion='1.0.0'
-    
+
 nuget:
     disable_publish_on_pr: true
     
