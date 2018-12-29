@@ -42,12 +42,12 @@ build_script:
 
 after_build:
 - ps: >-
-    if($env:BuildCore == True)
+    if($env:BuildCore eq True)
     {
         dotnet pack FWTL.Core.Common/FWTL.Core.Common.csproj --no-build --output nupkgs -p:PackageVersion=$env:APPVEYOR_REPO_TAG_NAME
     }
 
-    if($env:BuildInfrastructure == True)
+    if($env:BuildInfrastructure eq True)
     {
         dotnet pack FWTL.Infrastructure.Common/FWTL.Infrastructure.Common.csproj --no-build --output nupkgs -p:PackageVersion=$env:APPVEYOR_REPO_TAG_NAME
     }
