@@ -1,5 +1,9 @@
 version: '{build}'
 
+branches:
+  only:
+  - master
+
 init:
     - ps: |
             If ($Env:APPVEYOR_REPO_TAG_NAME -match "-"){
@@ -9,42 +13,30 @@ init:
               Set-AppveyorBuildVariable -Name "IsPreRelease" -Value False
             }
 
-branches:
-  only:
-  - master
+    - cmd: git config --global core.autocrlf true
 
-build:
-  verbosity: minimal
+artifacts:
+  - path: \nupkgs\*.nupkg
+    name: NuGet
 
 # cache:
 #   - Source\packages -> **\packages.config
-  
-platform: Any CPU
-configuration: Debug
 
 pull_requests:
   do_not_increment_build_number: true
 
-# artifacts:
-#   - path: \*.nupkg
-#     name: NuGet
-#   - path: \Source\Inquirer\bin\$(configuration)
-#     name: Inquirer 
-#     type: zip
+build_script:
+  - cmd: dotnet build
 
-
-# before_build:
-#   - nuget restore Source\Inquirer.sln
-
-# after_build:
-# - ps: >-
-#     if($env:APPVEYOR_REPO_TAG_NAME)
-#     {
-#         nuget pack Inquirer.nuspec -Version $env:APPVEYOR_REPO_TAG_NAME
-#     }
+after_build:
+- ps: >-
+    if($env:APPVEYOR_REPO_TAG_NAME)
+    {
+        dotnet pack --no-build --output nupkgs -p:PackageVersion= $env:APPVEYOR_REPO_TAG_NAME
+    }
   
-# nuget:
-#     disable_publish_on_pr: true
+nuget:
+    disable_publish_on_pr: true
     
 # deploy:
 #     - provider: GitHub
