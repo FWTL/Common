@@ -24,13 +24,13 @@ init:
     - cmd: git config --global core.autocrlf true
 
 artifacts:
-  - path: FWTL.Core\nupkgs\*.nupkg
+  - path: FWTL.Core.Common\nupkgs\*.nupkg
     name: nuget-core
-  - path: FWTL.Infrastructure\nupkgs\*.nupkg
+  - path: FWTL.Infrastructure.Common\nupkgs\*.nupkg
     name: nuget-infrastructure
 
 cache:
-  - packages -> FWTL.Core.csproj, FWTL.Infrastructure.csproj
+  - packages -> FWTL.Core.Common.csproj, FWTL.Infrastructure.Common.csproj
 
 pull_requests:
   do_not_increment_build_number: true
@@ -45,12 +45,12 @@ after_build:
 - ps: >-
     if($env:BuildCore)
     {
-        dotnet pack FWTL.Core/FWTL.Core.csproj --no-build --output nupkgs -p:PackageVersion=$env:PackageVersion
+        dotnet pack FWTL.Core.Common/FWTL.Core.Common.csproj --no-build --output nupkgs -p:PackageVersion=$env:PackageVersion
     }
 
     if($env:BuildInfrastructure)
     {
-        dotnet pack FWTL.Infrastructure/FWTL.Infrastructure.csproj --no-build --output nupkgs -p:PackageVersion=$env:PackageVersion
+        dotnet pack FWTL.Infrastructure.Common/FWTL.Infrastructure.Common.csproj --no-build --output nupkgs -p:PackageVersion=$env:PackageVersion
     }
 
 nuget:

@@ -3,24 +3,29 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FWTL.Core", "FWTL.Core\FWTL.Core.csproj", "{A1260C8A-72EF-4F56-8FFD-10D65A7C41DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FWTL.Infrastructure.Common", "FWTL.Infrastructure.Common\FWTL.Infrastructure.Common.csproj", "{9B945EC9-056C-4229-B08E-93A6C2E8E67A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FWTL.Infrastructure", "FWTL.Infrastructure\FWTL.Infrastructure.csproj", "{A0D6E895-CA1C-4BFB-B061-46D8D2381E7D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FWTL.Core.Common", "FWTL.Core.Common\FWTL.Core.Common.csproj", "{9F527D77-E13C-4193-9F2E-55A539848AC1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Nuget|Any CPU = Nuget|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A1260C8A-72EF-4F56-8FFD-10D65A7C41DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A1260C8A-72EF-4F56-8FFD-10D65A7C41DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A1260C8A-72EF-4F56-8FFD-10D65A7C41DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A1260C8A-72EF-4F56-8FFD-10D65A7C41DF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A0D6E895-CA1C-4BFB-B061-46D8D2381E7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A0D6E895-CA1C-4BFB-B061-46D8D2381E7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A0D6E895-CA1C-4BFB-B061-46D8D2381E7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A0D6E895-CA1C-4BFB-B061-46D8D2381E7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B945EC9-056C-4229-B08E-93A6C2E8E67A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B945EC9-056C-4229-B08E-93A6C2E8E67A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B945EC9-056C-4229-B08E-93A6C2E8E67A}.Nuget|Any CPU.ActiveCfg = Nuget|Any CPU
+		{9B945EC9-056C-4229-B08E-93A6C2E8E67A}.Nuget|Any CPU.Build.0 = Nuget|Any CPU
+		{9B945EC9-056C-4229-B08E-93A6C2E8E67A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B945EC9-056C-4229-B08E-93A6C2E8E67A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F527D77-E13C-4193-9F2E-55A539848AC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F527D77-E13C-4193-9F2E-55A539848AC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F527D77-E13C-4193-9F2E-55A539848AC1}.Nuget|Any CPU.ActiveCfg = Nuget|Any CPU
+		{9F527D77-E13C-4193-9F2E-55A539848AC1}.Nuget|Any CPU.Build.0 = Nuget|Any CPU
+		{9F527D77-E13C-4193-9F2E-55A539848AC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F527D77-E13C-4193-9F2E-55A539848AC1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
