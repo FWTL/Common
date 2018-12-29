@@ -44,7 +44,7 @@ after_build:
 - ps: >-
     Write-Host $env:BuildCore
     
-    if($env:BuildCore eq 'True')
+    if($env:BuildCore -eq 'True')
     {
         dotnet pack FWTL.Core.Common/FWTL.Core.Common.csproj --no-build --output nupkgs -p:PackageVersion=$env:APPVEYOR_REPO_TAG_NAME
     }
