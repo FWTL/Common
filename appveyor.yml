@@ -13,8 +13,8 @@ artifacts:
   - path: FWTL.Infrastructure.Common\nupkgs\*.nupkg
     name: nuget-infrastructure
 
-cache:
-  - packages -> FWTL.Core.Common.csproj, FWTL.Infrastructure.Common.csproj
+# cache:
+#   - packages -> FWTL.Core.Common.csproj, FWTL.Infrastructure.Common.csproj
 
 pull_requests:
   do_not_increment_build_number: true
