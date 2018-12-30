@@ -333,3 +333,6 @@ ASALocalRun/
 /FWTL.Infrastructure.Common/FWTL.Infrastructure.csproj
 /FWTL.Core.Common/Const.cs
 /FWTL.Infrastructure.Common/IdentityServer
+/FWTL.Core.Common/Services/Telegram
+/FWTL.Infrastructure.Common/Hangfire
+/FWTL.Infrastructure.Common/Telegram

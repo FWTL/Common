@@ -31,7 +31,7 @@ namespace FWTL.Infrastructure.Dapper
         public async Task<T> ExecuteAsync<T>(Func<IDbConnection, Task<T>> data)
         {
             await OpenAsync(_databaseConnection);
-            return await data(_databaseConnection);
+            return await data(_databaseConnection).ConfigureAwait(false);
         }
 
         private void Open(DbConnection connection)
@@ -46,14 +46,14 @@ namespace FWTL.Infrastructure.Dapper
         {
             if (connection.State == ConnectionState.Closed)
             {
-                await connection.OpenAsync();
+                await connection.OpenAsync().ConfigureAwait(false);
             }
         }
 
         public async Task ExecuteAsync(Func<IDbConnection, Task> data)
         {
             await OpenAsync(_databaseConnection);
-            await data(_databaseConnection);
+            await data(_databaseConnection).ConfigureAwait(false);
         }
 
         public void Dispose()
