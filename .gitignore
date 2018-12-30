@@ -331,3 +331,5 @@ ASALocalRun/
 /FWTL.Core.Common/Entities
 /FWTL.Core.Common/FWTL.Core.csproj
 /FWTL.Infrastructure.Common/FWTL.Infrastructure.csproj
+/FWTL.Core.Common/Const.cs
+/FWTL.Infrastructure.Common/IdentityServer
