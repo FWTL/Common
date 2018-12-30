@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using FWTL.Core.Services.Grid;
+﻿using FWTL.Core.Services.Grid;
 
 namespace FWTL.Core.Extensions
 {
