@@ -328,3 +328,6 @@ ASALocalRun/
 
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
+/FWTL.Core.Common/Entities
+/FWTL.Core.Common/FWTL.Core.csproj
+/FWTL.Infrastructure.Common/FWTL.Infrastructure.csproj
