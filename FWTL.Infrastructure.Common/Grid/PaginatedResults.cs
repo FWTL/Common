@@ -63,20 +63,6 @@ namespace FWTL.Infrastructure.Grid
             }
         }
 
-        private Dictionary<string, string> GetSortQueryParams(SortParams sortParams)
-        {
-            if(sortParams.IsNotNull())
-            {
-                return new Dictionary<string, string>
-                {
-                    { nameof(SortParams.ColumnNo), $"{ sortParams.ColumnNo}" },
-                    { nameof(SortParams.Direction), $"{ sortParams.ColumnNo}" },
-                };
-            }
-
-            return new Dictionary<string, string>();
-        }
-
         private long CalcualteTo(long total, PaginationParams paginationParams)
         {
             if (CurrentPage == LastPage)
@@ -95,6 +81,20 @@ namespace FWTL.Infrastructure.Grid
             From = paginationParams.Offset + 1;
             To = CalcualteTo(total, paginationParams);
             Total = total;
+        }
+
+        private Dictionary<string, string> GetSortQueryParams(SortParams sortParams)
+        {
+            if (sortParams.IsNotNull())
+            {
+                return new Dictionary<string, string>
+                {
+                    { nameof(SortParams.ColumnNo), $"{ sortParams.ColumnNo}" },
+                    { nameof(SortParams.Direction), $"{ sortParams.ColumnNo}" },
+                };
+            }
+
+            return new Dictionary<string, string>();
         }
     }
 }

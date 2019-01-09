@@ -21,6 +21,7 @@ pull_requests:
 
 before_build:
   - cmd: dotnet restore FWTL.sln
+  - cmd: dotnet 
 
 build_script:
   - cmd: dotnet build FWTL.sln --no-restore 
@@ -38,14 +39,16 @@ nuget:
     
 deploy: 
     - provider: NuGet
+      server: https://fwtlnuget.azurewebsites.net/nuget
       api_key:
-          secure: 4dgur5pRw+KDWKk2AD4v4YuOaxjd8FfkI7wjpb+b3DiKEqnrYV/ZBwoGWA5lYfDl
+          secure: e8azew1tIzD/MZI/okeF195cMFeQTElB+sAX0Vr2/Cc=
       artifact: nuget-core
       on:
           appveyor_repo_tag: true
     - provider: NuGet
+      server: https://fwtlnuget.azurewebsites.net/nuget
       api_key:
-          secure: 4dgur5pRw+KDWKk2AD4v4YuOaxjd8FfkI7wjpb+b3DiKEqnrYV/ZBwoGWA5lYfDl
+          secure: e8azew1tIzD/MZI/okeF195cMFeQTElB+sAX0Vr2/Cc=
       artifact: nuget-infrastructure
       on:
           appveyor_repo_tag: true

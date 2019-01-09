@@ -16,6 +16,11 @@ namespace FWTL.Infrastructure.Dapper
             _databaseConnection = databaseConnection;
         }
 
+        public void Dispose()
+        {
+            _databaseConnection.Dispose();
+        }
+
         public void Execute(Action<IDbConnection> data)
         {
             Open(_databaseConnection);
@@ -34,6 +39,12 @@ namespace FWTL.Infrastructure.Dapper
             return await data(_databaseConnection).ConfigureAwait(false);
         }
 
+        public async Task ExecuteAsync(Func<IDbConnection, Task> data)
+        {
+            await OpenAsync(_databaseConnection);
+            await data(_databaseConnection).ConfigureAwait(false);
+        }
+
         private void Open(DbConnection connection)
         {
             if (connection.State == ConnectionState.Closed)
@@ -48,17 +59,6 @@ namespace FWTL.Infrastructure.Dapper
             {
                 await connection.OpenAsync().ConfigureAwait(false);
             }
-        }
-
-        public async Task ExecuteAsync(Func<IDbConnection, Task> data)
-        {
-            await OpenAsync(_databaseConnection);
-            await data(_databaseConnection).ConfigureAwait(false);
-        }
-
-        public void Dispose()
-        {
-            _databaseConnection.Dispose();
         }
     }
 }
