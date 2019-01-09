@@ -21,7 +21,6 @@ pull_requests:
 
 before_build:
   - cmd: dotnet restore FWTL.sln
-  - cmd: dotnet 
 
 build_script:
   - cmd: dotnet build FWTL.sln --no-restore 
