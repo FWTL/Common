@@ -14,7 +14,25 @@ namespace FWTL.Infrastructure.Cache
             List<string> values = new List<string>();
             foreach (PropertyInfo property in properties)
             {
-                values.Add(property.GetValue(model).ToString());
+                switch (property.PropertyType.Name)
+                {
+                    case (nameof(DateTime)):
+                        {
+                            var value = (DateTime)property.GetValue(model);
+                            values.Add(value.Ticks.ToString());
+                            break;
+                        }
+                    default:
+                        {
+                            if ((property.PropertyType.IsClass && property.PropertyType != typeof(string)) || property.PropertyType.IsArray)
+                            {
+                                throw new NotImplementedException("Only simple types are allowed");
+                            }
+
+                            values.Add(property.GetValue(model)?.ToString() ?? "null");
+                            break;
+                        }
+                }
             }
 
             return $"{name}." + string.Join(".", values);
@@ -26,7 +44,40 @@ namespace FWTL.Infrastructure.Cache
             List<string> values = new List<string>();
             foreach (var property in properties)
             {
-                values.Add(property.Compile()(model).ToString());
+                object value = null;
+                try
+                {
+                    value = property.Compile()(model);
+                }
+                catch { }
+
+                if (value == null)
+                {
+                    values.Add("null");
+                    continue;
+                }
+
+                Type propertyType = value.GetType();
+
+                switch (propertyType.Name)
+                {
+                    case (nameof(DateTime)):
+                        {
+                            long ticks = ((DateTime)value).Ticks;
+                            values.Add(ticks.ToString());
+                            break;
+                        }
+                    default:
+                        {
+                            if ((propertyType.IsClass && propertyType != typeof(string)) || propertyType.IsArray)
+                            {
+                                throw new NotImplementedException("Only simple types are allowed");
+                            }
+
+                            values.Add(value?.ToString() ?? "null");
+                            break;
+                        }
+                }
             }
 
             return $"{name}." + string.Join(".", values);
