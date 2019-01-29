@@ -30,14 +30,16 @@ namespace FWTL.Infrastructure.Configuration
             => GetTokenAsync(_clientId, _clientSecret, authority, resource, scope))))
             {
                 IPage<SecretItem> secrets = null;
+                string page = _baseUrl;
                 do
                 {
-                    secrets = await keyVaultClient.GetSecretsAsync(_baseUrl).ConfigureAwait(false);
+                    secrets = await keyVaultClient.GetSecretsAsync(page).ConfigureAwait(false);
                     foreach (SecretItem secret in secrets)
                     {
                         var value = (await keyVaultClient.GetSecretAsync(secret.Identifier.Identifier).ConfigureAwait(false)).Value;
                         dict.Add(ParseKey(secret.Identifier.Name), value);
                     }
+                    page = secrets.NextPageLink;
                 }
                 while (!string.IsNullOrWhiteSpace(secrets.NextPageLink));
             }

@@ -5,7 +5,7 @@ using Shouldly;
 using System;
 using System.Collections.Generic;
 
-namespace FWTL.Common.Tests
+namespace Tests.CacheKeyBuilderTests
 {
     public enum TestEnum
     {
