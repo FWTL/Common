@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FWTL.Infrastructure.Common"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FWTL.Core.Common", "FWTL.Core.Common\FWTL.Core.Common.csproj", "{9F527D77-E13C-4193-9F2E-55A539848AC1}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests", "Tests\Tests.csproj", "{B4BF51FF-CF90-4A42-9435-65899886CD6F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{9F527D77-E13C-4193-9F2E-55A539848AC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F527D77-E13C-4193-9F2E-55A539848AC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F527D77-E13C-4193-9F2E-55A539848AC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4BF51FF-CF90-4A42-9435-65899886CD6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4BF51FF-CF90-4A42-9435-65899886CD6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4BF51FF-CF90-4A42-9435-65899886CD6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4BF51FF-CF90-4A42-9435-65899886CD6F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
