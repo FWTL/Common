@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Text;
 using FluentValidation;
+using FWTL.Core.Services.Unique;
 using FWTL.Infrastructure.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http.Extensions;
@@ -14,13 +15,14 @@ namespace FWTL.Infrastructure.Filters
     public sealed class ApiExceptionAttribute : ExceptionFilterAttribute
     {
         private readonly IHostingEnvironment _hosting;
-
+        private readonly IGuidService _guid;
         private readonly ILogger _logger;
 
-        public ApiExceptionAttribute(ILogger logger, IHostingEnvironment hosting)
+        public ApiExceptionAttribute(ILogger logger, IHostingEnvironment hosting, IGuidService guid)
         {
             _logger = logger;
             _hosting = hosting;
+            _guid = guid;
         }
 
         public override void OnException(ExceptionContext context)
@@ -33,7 +35,8 @@ namespace FWTL.Infrastructure.Filters
                 return;
             }
 
-            var exceptionId = Guid.NewGuid();
+            var exceptionId = _guid.New();
+
             context.HttpContext.Response.StatusCode = 500;
             var sb = new StringBuilder();
             sb.AppendLine("ErrorId: " + exceptionId);
